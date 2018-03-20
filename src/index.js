@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-'use stict';
 
 import path from 'path';
 import { prompt } from 'inquirer';

@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-'use stict';
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
