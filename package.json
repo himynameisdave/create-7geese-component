@@ -1,0 +1,26 @@
+{
+  "name": "create-7geese-component",
+  "version": "1.0.0",
+  "description": "💎 A CLI for creating new 7Geese components",
+  "main": "bin/index.js",
+  "scripts": {
+    "build": "babel src --out-dir bin",
+    "postinstall": "npm run build",
+    "start": "node bin/index.js"
+  },
+  "bin": {
+    "create-7geese-component": "bin/index.js",
+    "c7c": "bin/index.js"
+  },
+  "keywords": [
+    "cli",
+    "generator",
+    "7geese"
+  ],
+  "author": "himynameisdave <d@velunny.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
