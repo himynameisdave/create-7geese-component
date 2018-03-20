@@ -20,6 +20,17 @@
   ],
   "author": "himynameisdave <d@velunny.com>",
   "license": "MIT",
+  "preferGlobal": true,
+  "private": false,
+  "dependencies": {
+    "commander": "^2.15.1",
+    "inquirer": "^5.1.0",
+    "lodash.kebabcase": "^4.1.1",
+    "mkdir": "0.0.2",
+    "pascalcase": "^0.1.1",
+    "string-template": "^1.0.0",
+    "yargs": "^11.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",

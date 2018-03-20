@@ -1,3 +1,7 @@
 {
-    "extends": "himynameisdave/configurations/babel-node"
+    "extends": "himynameisdave/configurations/babel-node",
+    "rules": {
+        "max-statements": 0,
+        "no-console": 0
+    }
 }
