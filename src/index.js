@@ -7,7 +7,7 @@ import kebabCase from 'lodash.kebabcase';
 import mkdirp from './mkdirp.js';
 import prompts from './prompts.js';
 import read from './read-template.js';
-import writeFile from './write-file.js';
+import write from './write-file.js';
 import { DEFAULT_COMPONENTS_PATH } from './constants.js';
 //  c7c --name
 const argv = require('yargs').argv;
@@ -34,34 +34,22 @@ const argv = require('yargs').argv;
     //  2. Make the root directory
     await mkdirp(config.path);
 
-    //  3. Read and create template strings
-    const getTemplatePath = template => path.resolve(__dirname, '../templates', template);
+    //  3. Read and create template string
     const readTemplate = read(config);
-    const templateExample = await readTemplate(getTemplatePath('component.examples.md'));
-    const templateTest = await readTemplate(getTemplatePath('component.jestspec.jsx'));
-    const templateComponent = await readTemplate(getTemplatePath('component.jsx'));
-    const templateLess = await readTemplate(getTemplatePath('component.less'));
+    const writeFile = write(config);
+    const fileSuffixes = {
+        example: '.examples.md',
+        jest: '.jestspec.jsx',
+        component: '.jsx',
+        less: '.less',
+    };
+    const fileTypes = Object.keys(fileSuffixes);
 
-    //  4. Write the files
-    const getWritePath = writePath => path.resolve(
-        process.cwd(),
-        config.path,
-        writePath
-    );
-    await writeFile(
-        getWritePath(`${config.kebab}.examples.md`),
-        templateExample
-    );
-    await writeFile(
-        getWritePath(`${config.kebab}.jestspec.jsx`),
-        templateTest
-    );
-    await writeFile(
-        getWritePath(`${config.kebab}.jsx`),
-        templateComponent
-    );
-    await writeFile(
-        getWritePath(`${config.kebab}.less`),
-        templateLess
-    );
+    fileTypes.forEach(async type => {
+        const fileContents = await readTemplate(`component${fileSuffixes[type]}`);
+        await writeFile(`${config.kebab}${fileSuffixes[type]}`, fileContents);
+    });
+
+    console.log(`\n💎  Created your component at ${config.path}\n`);
+
 }());

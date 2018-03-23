@@ -32,11 +32,11 @@ All you need to do give your component a name. Do so like this:
 c7c --name MyComponent
 ```
 
-Omitting the name argument will cause the program to prompt you for one.
+Omitting the name argument will cause the program to prompt you for one. Your name can also be kebabcased, like `my-sweet-Component`.
 
 **Path**
 
-The command assumes you are running this at the root of the 7Geese repo and want your new component to live in `./static/js/apps/components/`. But perhaps you are a cool kid and want to specify your own path relative to the current directory, do so like this:
+The command assumes you are running this at the root of the 7Geese repo and want your new component to live in `./static/js/apps/components/`. But perhaps you are a cool kid and want to specify your own path to `/components/` relative to the current directory, do so like this:
 
 ```
 c7c --name my-component --path ./another-path/

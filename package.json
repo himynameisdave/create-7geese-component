@@ -1,11 +1,12 @@
 {
   "name": "create-7geese-component",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "💎 A CLI for creating new 7Geese components",
   "main": "bin/index.js",
   "scripts": {
     "build": "babel src --out-dir bin",
     "precommit": "npm run lint && npm run build",
+    "prepublish": "npm run lint && npm run build",
     "lint": "eslint src/**",
     "start": "node bin/index.js"
   },

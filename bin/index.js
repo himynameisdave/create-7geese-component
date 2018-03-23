@@ -57,22 +57,27 @@ _asyncToGenerator(function* () {
     //  2. Make the root directory
     yield (0, _mkdirp2.default)(config.path);
 
-    //  3. Read and create template strings
-    const getTemplatePath = function (template) {
-        return _path2.default.resolve(__dirname, '../templates', template);
-    };
+    //  3. Read and create template string
     const readTemplate = (0, _readTemplate2.default)(config);
-    const templateExample = yield readTemplate(getTemplatePath('component.examples.md'));
-    const templateTest = yield readTemplate(getTemplatePath('component.jestspec.jsx'));
-    const templateComponent = yield readTemplate(getTemplatePath('component.jsx'));
-    const templateLess = yield readTemplate(getTemplatePath('component.less'));
-
-    //  4. Write the files
-    const getWritePath = function (writePath) {
-        return _path2.default.resolve(process.cwd(), config.path, writePath);
+    const writeFile = (0, _writeFile2.default)(config);
+    const fileSuffixes = {
+        example: '.examples.md',
+        jest: '.jestspec.jsx',
+        component: '.jsx',
+        less: '.less'
     };
-    yield (0, _writeFile2.default)(getWritePath(`${config.kebab}.examples.md`), templateExample);
-    yield (0, _writeFile2.default)(getWritePath(`${config.kebab}.jestspec.jsx`), templateTest);
-    yield (0, _writeFile2.default)(getWritePath(`${config.kebab}.jsx`), templateComponent);
-    yield (0, _writeFile2.default)(getWritePath(`${config.kebab}.less`), templateLess);
+    const fileTypes = Object.keys(fileSuffixes);
+
+    fileTypes.forEach((() => {
+        var _ref2 = _asyncToGenerator(function* (type) {
+            const fileContents = yield readTemplate(`component${fileSuffixes[type]}`);
+            yield writeFile(`${config.kebab}${fileSuffixes[type]}`, fileContents);
+        });
+
+        return function (_x) {
+            return _ref2.apply(this, arguments);
+        };
+    })());
+
+    console.log(`\n💎  Created your component at ${config.path}\n`);
 })();

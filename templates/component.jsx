@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '{kebab}.less';
+import './{kebab}.less';
 
 
 const {pascal} = () => (
