@@ -1,6 +1,6 @@
 {
   "name": "create-7geese-component",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "💎 A CLI for creating new 7Geese components",
   "main": "bin/index.js",
   "scripts": {

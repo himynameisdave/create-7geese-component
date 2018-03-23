@@ -17,7 +17,7 @@ Scaffolds out a component with the following structure:
 Install the CLI globally:
 
 ```
-npm i -g git+https://git@github.com/himynameisdave/create-7geese-component.git
+npm i -g create-7geese-component
 ```
 
 ### Usage
